@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; EasyProcess v0.0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="EasyProcess v0.0.7 documentation" href="index.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="About" href="readme.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="About"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">EasyProcess v0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easyprocess</span> <span class="kn">import</span> <span class="n">EasyProcess</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, get stdout (command is string):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;echo hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">stdout</span>
+<span class="go">&#39;hello&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, get stdout (command is list):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">([</span><span class="s">&#39;echo&#39;</span><span class="p">,</span><span class="s">&#39;hello&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">stdout</span>
+<span class="go">&#39;hello&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, get stderr:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">stderr</span>
+<span class="go">&#39;Python 2.6.6&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, get return code:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">return_code</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait 1 second, stop it, get stdout:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span><span class="o">.</span><span class="n">stdout</span>
+<span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.046 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.043 ms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, check for errors:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ls&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="go">&lt;Proc cmd_param=ls alias=None cmd=[&#39;ls&#39;] (ls) oserror=None returncode=0 stdout=&quot;build</span>
+<span class="go">dist</span>
+<span class="go">docs</span>
+<span class="go">easyprocess</span>
+<span class="go">EasyProcess.egg-info</span>
+<span class="go">LICENSE.txt</span>
+<span class="go">MANIFEST.in</span>
+<span class="go">nosetests.xml</span>
+<span class="go">pavement.py</span>
+<span class="go">paver-minilib.zip</span>
+<span class="go">README.rst</span>
+<span class="go">setup.py</span>
+<span class="go">temp</span>
+<span class="go">tests</span>
+<span class="go">TODO&quot; stderr=&quot;&quot;&gt;</span>
+</pre></div>
+</div>
+<p>Exceptions in check:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;bad_command&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;easyprocess.py&quot;</span>, line <span class="m">84</span>, in <span class="n">check</span>
+    <span class="k">raise</span> <span class="n">EasyProcessCheckError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="gr">easyprocess.EasyProcessCheckError</span>: <span class="n">EasyProcess check failed!</span>
+<span class="go"> OSError:[Errno 2] No such file or directory</span>
+<span class="go"> cmd:[&#39;bad_command&#39;]</span>
+<span class="go"> return code:None</span>
+<span class="go"> stderr:None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;sh -c bad_command&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;easyprocess.py&quot;</span>, line <span class="m">84</span>, in <span class="n">check</span>
+    <span class="k">raise</span> <span class="n">EasyProcessCheckError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="gr">easyprocess.EasyProcessCheckError</span>: <span class="n">EasyProcess check failed!</span>
+<span class="go"> OSError:None</span>
+<span class="go"> cmd:[&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;]</span>
+<span class="go"> return code:127</span>
+<span class="go"> stderr:sh: bad_command: not found</span>
+</pre></div>
+</div>
+<div class="section" id="timeout">
+<h2>Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easyprocess</span> <span class="kn">import</span> <span class="n">EasyProcess</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Run ping with  timeout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
+<span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.047 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.045 ms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="logging">
+<h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
+<p>Example program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">easyprocess</span> <span class="kn">import</span> <span class="n">EasyProcess</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c"># turn on logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;echo hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;bad_command&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">detail</span><span class="p">:</span>
+    <span class="k">print</span>  <span class="n">detail</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;sh -c bad_command&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">detail</span><span class="p">:</span>
+    <span class="k">print</span>  <span class="n">detail</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ python -m easyprocess.examples.log
+DEBUG:easyprocess:param: &quot;echo hello&quot; command: [&#39;echo&#39;, &#39;hello&#39;] (&quot;echo hello&quot;)
+DEBUG:easyprocess:reading config: /home/titi/.easyprocess.cfg
+DEBUG:easyprocess:process was started (pid=13369)
+DEBUG:easyprocess:Thread started
+DEBUG:easyprocess:process has ended
+DEBUG:easyprocess:return code=0
+DEBUG:easyprocess:stdout=hello
+DEBUG:easyprocess:stderr=
+DEBUG:easyprocess:Thread finished
+DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
+DEBUG:easyprocess:process was started (pid=13371)
+DEBUG:easyprocess:Thread started
+DEBUG:easyprocess:process has ended
+DEBUG:easyprocess:return code=0
+DEBUG:easyprocess:stdout=
+DEBUG:easyprocess:stderr=Python 2.6.6
+DEBUG:easyprocess:Thread finished
+DEBUG:easyprocess:param: &quot;ping localhost&quot; command: [&#39;ping&#39;, &#39;localhost&#39;] (&quot;ping localhost&quot;)
+DEBUG:easyprocess:process was started (pid=13373)
+DEBUG:easyprocess:Thread started
+DEBUG:easyprocess:stopping process (pid=13373 cmd=&quot;[&#39;ping&#39;, &#39;localhost&#39;]&quot;)
+DEBUG:easyprocess:process is active -&gt; sending SIGTERM
+DEBUG:easyprocess:process has ended
+DEBUG:easyprocess:return code=-15
+DEBUG:easyprocess:stdout=PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.043 ms
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.046 ms
+DEBUG:easyprocess:stderr=
+DEBUG:easyprocess:Thread finished
+DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
+DEBUG:easyprocess:process was started (pid=13375)
+DEBUG:easyprocess:Thread started
+DEBUG:easyprocess:process has ended
+DEBUG:easyprocess:return code=0
+DEBUG:easyprocess:stdout=
+DEBUG:easyprocess:stderr=Python 2.6.6
+DEBUG:easyprocess:Thread finished
+DEBUG:easyprocess:param: &quot;bad_command&quot; command: [&#39;bad_command&#39;] (&quot;bad_command&quot;)
+DEBUG:easyprocess:OSError exception:[Errno 2] No such file or directory
+DEBUG:easyprocess:param: &quot;sh -c bad_command&quot; command: [&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;] (&quot;sh -c bad_command&quot;)
+DEBUG:easyprocess:process was started (pid=13378)
+DEBUG:easyprocess:Thread started
+DEBUG:easyprocess:process has ended
+DEBUG:easyprocess:return code=127
+DEBUG:easyprocess:stdout=
+DEBUG:easyprocess:stderr=sh: bad_command: not found
+DEBUG:easyprocess:Thread finished
+start error &lt;Proc cmd_param=bad_command alias=None cmd=[&#39;bad_command&#39;] (bad_command) oserror=[Errno 2] No such file or directory returncode=None stdout=&quot;None&quot; stderr=&quot;None&quot;&gt;
+check error, return code is not zero! &lt;Proc cmd_param=sh -c bad_command alias=None cmd=[&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;] (sh -c bad_command) oserror=None returncode=127 stdout=&quot;&quot; stderr=&quot;sh: bad_command: not found&quot;&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="alias">
+<h1>Alias<a class="headerlink" href="#alias" title="Permalink to this headline">¶</a></h1>
+<p>You can define an alias for EasyProcess calls
+by editing your config file ($HOME/.easyprocess.cfg)
+This can be used for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>testing defferent version of the same program</li>
+<li>redirect calls</li>
+<li>program path can be defined here. (Installed programs are not in $PATH on Windows)</li>
+</ul>
+</div></blockquote>
+<p>start python and print python version:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easyprocess</span> <span class="kn">import</span> <span class="n">EasyProcess</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">stderr</span>
+<span class="go">&#39;Python 2.6.6&#39;</span>
+</pre></div>
+</div>
+<p>edit the config file: $HOME/.easyprocess.cfg:</p>
+<div class="highlight-python"><pre>[link]
+python=/usr/bin/python2.7</pre>
+</div>
+<p>restart python and print python version again:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">easyprocess</span> <span class="kn">import</span> <span class="n">EasyProcess</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;python --version&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">stderr</span>
+<span class="go">&#39;Python 2.7.0+&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="replacing-existing-functions">
+<h1>Replacing existing functions<a class="headerlink" href="#replacing-existing-functions" title="Permalink to this headline">¶</a></h1>
+<p>Replacing os.system:</p>
+<div class="highlight-python"><pre>retcode = os.system("ls -l")
+==&gt;
+p = EasyProcess("ls -l").call()
+retcode = p.return_code
+print p.stdout</pre>
+</div>
+<p>Replacing subprocess.call:</p>
+<div class="highlight-python"><pre>retcode = subprocess.call(["ls", "-l"])
+==&gt;
+p = EasyProcess(["ls", "-l"]).call()
+retcode = p.return_code
+print p.stdout</pre>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#timeout">Timeout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#alias">Alias</a></li>
+<li><a class="reference internal" href="#replacing-existing-functions">Replacing existing functions</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="readme.html"
+                        title="previous chapter">About</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/usage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="About"
+             >previous</a> |</li>
+        <li><a href="index.html">EasyProcess v0.0.7 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, ponty.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
