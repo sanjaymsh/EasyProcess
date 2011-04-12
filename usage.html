@@ -66,8 +66,8 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait 1 second, stop it, get stdout:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span><span class="o">.</span><span class="n">stdout</span>
 <span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.046 ms</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.043 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.033 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.046 ms</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, check for errors:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ls&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
 <span class="go">&lt;Proc cmd_param=ls alias=None cmd=[&#39;ls&#39;] (ls) oserror=None returncode=0 stdout=&quot;build</span>
@@ -116,8 +116,8 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run ping with  timeout</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
 <span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.047 ms</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.045 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.033 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.046 ms</span>
 </pre></div>
 </div>
 </div>
@@ -150,7 +150,7 @@
 <div class="highlight-text"><div class="highlight"><pre>$ python -m easyprocess.examples.log
 DEBUG:easyprocess:param: &quot;echo hello&quot; command: [&#39;echo&#39;, &#39;hello&#39;] (&quot;echo hello&quot;)
 DEBUG:easyprocess:reading config: /home/titi/.easyprocess.cfg
-DEBUG:easyprocess:process was started (pid=13369)
+DEBUG:easyprocess:process was started (pid=13801)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -158,7 +158,7 @@ DEBUG:easyprocess:stdout=hello
 DEBUG:easyprocess:stderr=
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
-DEBUG:easyprocess:process was started (pid=13371)
+DEBUG:easyprocess:process was started (pid=13803)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -166,19 +166,19 @@ DEBUG:easyprocess:stdout=
 DEBUG:easyprocess:stderr=Python 2.6.6
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;ping localhost&quot; command: [&#39;ping&#39;, &#39;localhost&#39;] (&quot;ping localhost&quot;)
-DEBUG:easyprocess:process was started (pid=13373)
+DEBUG:easyprocess:process was started (pid=13805)
 DEBUG:easyprocess:Thread started
-DEBUG:easyprocess:stopping process (pid=13373 cmd=&quot;[&#39;ping&#39;, &#39;localhost&#39;]&quot;)
+DEBUG:easyprocess:stopping process (pid=13805 cmd=&quot;[&#39;ping&#39;, &#39;localhost&#39;]&quot;)
 DEBUG:easyprocess:process is active -&gt; sending SIGTERM
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=-15
 DEBUG:easyprocess:stdout=PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.043 ms
-64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.046 ms
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.030 ms
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.039 ms
 DEBUG:easyprocess:stderr=
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
-DEBUG:easyprocess:process was started (pid=13375)
+DEBUG:easyprocess:process was started (pid=13811)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -188,7 +188,7 @@ DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;bad_command&quot; command: [&#39;bad_command&#39;] (&quot;bad_command&quot;)
 DEBUG:easyprocess:OSError exception:[Errno 2] No such file or directory
 DEBUG:easyprocess:param: &quot;sh -c bad_command&quot; command: [&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;] (&quot;sh -c bad_command&quot;)
-DEBUG:easyprocess:process was started (pid=13378)
+DEBUG:easyprocess:process was started (pid=13814)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=127
