@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usage &mdash; EasyProcess v0.0.7 documentation</title>
+    <title>Usage &mdash; EasyProcess v0.0.8 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.7',
+        VERSION:     '0.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="EasyProcess v0.0.7 documentation" href="index.html" />
+    <link rel="top" title="EasyProcess v0.0.8 documentation" href="index.html" />
     <link rel="next" title="API" href="api.html" />
     <link rel="prev" title="About" href="readme.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">EasyProcess v0.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">EasyProcess v0.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -66,23 +66,22 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait 1 second, stop it, get stdout:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span><span class="o">.</span><span class="n">stdout</span>
 <span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.046 ms</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.044 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.021 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.019 ms</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run program, wait for it to complete, check for errors:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ls&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
-<span class="go">&lt;Proc cmd_param=ls alias=None cmd=[&#39;ls&#39;] (ls) oserror=None returncode=0 stdout=&quot;build</span>
-<span class="go">dist</span>
+<span class="go">&lt;Proc cmd_param=ls alias=None cmd=[&#39;ls&#39;] (ls) oserror=None returncode=0 stdout=&quot;dist</span>
+<span class="go">distribute_setup.py</span>
 <span class="go">docs</span>
 <span class="go">easyprocess</span>
 <span class="go">EasyProcess.egg-info</span>
 <span class="go">LICENSE.txt</span>
 <span class="go">MANIFEST.in</span>
-<span class="go">nosetests.xml</span>
 <span class="go">pavement.py</span>
 <span class="go">paver-minilib.zip</span>
 <span class="go">README.rst</span>
 <span class="go">setup.py</span>
-<span class="go">temp</span>
+<span class="go">sloccount.sc</span>
 <span class="go">tests</span>
 <span class="go">TODO&quot; stderr=&quot;&quot;&gt;</span>
 </pre></div>
@@ -116,7 +115,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Run ping with  timeout</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">EasyProcess</span><span class="p">(</span><span class="s">&#39;ping localhost&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
 <span class="go">PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.</span>
-<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.043 ms</span>
+<span class="go">64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.027 ms</span>
 </pre></div>
 </div>
 </div>
@@ -149,7 +148,7 @@
 <div class="highlight-text"><div class="highlight"><pre>$ python -m easyprocess.examples.log
 DEBUG:easyprocess:param: &quot;echo hello&quot; command: [&#39;echo&#39;, &#39;hello&#39;] (&quot;echo hello&quot;)
 DEBUG:easyprocess:reading config: /home/titi/.easyprocess.cfg
-DEBUG:easyprocess:process was started (pid=18697)
+DEBUG:easyprocess:process was started (pid=16381)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -157,7 +156,7 @@ DEBUG:easyprocess:stdout=hello
 DEBUG:easyprocess:stderr=
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
-DEBUG:easyprocess:process was started (pid=18699)
+DEBUG:easyprocess:process was started (pid=16383)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -165,19 +164,19 @@ DEBUG:easyprocess:stdout=
 DEBUG:easyprocess:stderr=Python 2.6.6
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;ping localhost&quot; command: [&#39;ping&#39;, &#39;localhost&#39;] (&quot;ping localhost&quot;)
-DEBUG:easyprocess:process was started (pid=18701)
+DEBUG:easyprocess:process was started (pid=16385)
 DEBUG:easyprocess:Thread started
-DEBUG:easyprocess:stopping process (pid=18701 cmd=&quot;[&#39;ping&#39;, &#39;localhost&#39;]&quot;)
+DEBUG:easyprocess:stopping process (pid=16385 cmd=&quot;[&#39;ping&#39;, &#39;localhost&#39;]&quot;)
 DEBUG:easyprocess:process is active -&gt; sending SIGTERM
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=-15
 DEBUG:easyprocess:stdout=PING localhost.localdomain (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.046 ms
-64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.045 ms
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=1 ttl=64 time=0.021 ms
+64 bytes from localhost.localdomain (127.0.0.1): icmp_req=2 ttl=64 time=0.021 ms
 DEBUG:easyprocess:stderr=
 DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;python --version&quot; command: [&#39;python&#39;, &#39;--version&#39;] (&quot;python --version&quot;)
-DEBUG:easyprocess:process was started (pid=18703)
+DEBUG:easyprocess:process was started (pid=16387)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=0
@@ -187,13 +186,18 @@ DEBUG:easyprocess:Thread finished
 DEBUG:easyprocess:param: &quot;bad_command&quot; command: [&#39;bad_command&#39;] (&quot;bad_command&quot;)
 DEBUG:easyprocess:OSError exception:[Errno 2] No such file or directory
 DEBUG:easyprocess:param: &quot;sh -c bad_command&quot; command: [&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;] (&quot;sh -c bad_command&quot;)
-DEBUG:easyprocess:process was started (pid=18706)
+DEBUG:easyprocess:process was started (pid=16390)
 DEBUG:easyprocess:Thread started
 DEBUG:easyprocess:process has ended
 DEBUG:easyprocess:return code=127
 DEBUG:easyprocess:stdout=
 DEBUG:easyprocess:stderr=sh: bad_command: not found
 DEBUG:easyprocess:Thread finished
+DEBUG:easyprocess:stopping thread
+DEBUG:easyprocess:stopping thread
+DEBUG:easyprocess:stopping thread
+DEBUG:easyprocess:stopping thread
+DEBUG:easyprocess:stopping thread
 start error &lt;Proc cmd_param=bad_command alias=None cmd=[&#39;bad_command&#39;] (bad_command) oserror=[Errno 2] No such file or directory returncode=None stdout=&quot;None&quot; stderr=&quot;None&quot;&gt;
 check error, return code is not zero! &lt;Proc cmd_param=sh -c bad_command alias=None cmd=[&#39;sh&#39;, &#39;-c&#39;, &#39;bad_command&#39;] (sh -c bad_command) oserror=None returncode=127 stdout=&quot;&quot; stderr=&quot;sh: bad_command: not found&quot;&gt;
 </pre></div>
@@ -206,7 +210,7 @@ by editing your config file ($HOME/.easyprocess.cfg)
 This can be used for:</p>
 <blockquote>
 <div><ul class="simple">
-<li>testing defferent version of the same program</li>
+<li>testing different version of the same program</li>
 <li>redirect calls</li>
 <li>program path can be defined here. (Installed programs are not in $PATH on Windows)</li>
 </ul>
@@ -303,7 +307,7 @@ print p.stdout</pre>
         <li class="right" >
           <a href="readme.html" title="About"
              >previous</a> |</li>
-        <li><a href="index.html">EasyProcess v0.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">EasyProcess v0.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
