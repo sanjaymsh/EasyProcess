@@ -3,9 +3,6 @@ os: linux
 python:
  - "2.7"
  - "3.6"
-arch:
-  - amd64
-  - ppc64le
 matrix:
   include:
     - name: 3.7_xenial
@@ -41,12 +38,6 @@ matrix:
         - choco install python --version 3.8
         - python -m pip install --upgrade pip
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-matrix:
-   exclude:
-      - os: osx
-        arch: ppc64le
-      - os: windows
-        arch: ppc64le
 
 install:
  - if [ ${TRAVIS_PYTHON_VERSION:0:1} == "2" ]; then PYTHON=python; else PYTHON=python3; fi
