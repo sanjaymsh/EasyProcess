@@ -1,5 +1,8 @@
 language: python
 os: linux
+arch: 
+ - amd64
+ - ppc64le
 python:
  - "2.7"
  - "3.6"
@@ -8,20 +11,40 @@ matrix:
     - name: 3.7_xenial
       python: 3.7
       dist: xenial
+    - name: 3.7_xenial
+      arch: ppc64le
+      python: 3.7
+      dist: xenial
       
     - name: 3.8_xenial
+      python: 3.8
+      dist: xenial
+    - name: 3.8_xenial
+      arch: ppc64le
       python: 3.8
       dist: xenial
       
     - name: 2.7_bionic
       python: 2.7
       dist: bionic
+    - name: 2.7_bionic
+      arch: ppc64le
+      python: 2.7
+      dist: bionic
 
     - name: 3.7_bionic
       python: 3.7
       dist: bionic
+    - name: 3.7_bionic
+      arch: ppc64le
+      python: 3.7
+      dist: bionic
       
     - name: 3.8_bionic
+      python: 3.8
+      dist: bionic
+    - name: 3.8_bionic
+      arch: ppc64le
       python: 3.8
       dist: bionic
 
